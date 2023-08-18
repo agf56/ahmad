@@ -14,7 +14,7 @@ import os
 
 def running():
     opt = Options()
-    opt.headless = True
+    #opt.headless = True
     driver1 = webdriver.Chrome(options=opt)
     driver1.set_window_size(800, 600)
     driver1.get("https://aviso.bz/login")
