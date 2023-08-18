@@ -14,13 +14,13 @@ import os
 
 def running():
     opt = Options()
-    #opt.headless = True
+    opt.headless = True
     driver1 = webdriver.Chrome(options=opt)
     driver1.set_window_size(800, 600)
     driver1.get("https://aviso.bz/login")
     print("please wait...")
     # load cookies
-    with open('./cookies/account_1.json', 'r') as f:
+    with open('./account_1.json', 'r') as f:
         cookies = json.load(f)
     time.sleep(2)
     for cookie in cookies:
@@ -55,7 +55,7 @@ def running():
     time.sleep(new_wait)
     time.sleep(0.5)
     driver1.get("https://aviso.bz/")
-    file_path = "./cookies/account_1.json"
+    file_path = "./account_1.json"
     if os.path.exists(file_path):
         os.remove(file_path)
         print(f"{file_path} delete successfully..")
@@ -63,7 +63,7 @@ def running():
     for cookie in cookies:
         if 'expiry' in cookie:
             del cookie['expiry']
-    new = "./cookies/account_1.json"
+    new = "./account_1.json"
     with open(new, 'w') as f:
         json.dump(cookies, f)
     print("cookies copied done..")
